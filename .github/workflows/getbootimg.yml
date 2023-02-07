@@ -18,12 +18,7 @@ jobs:
       uses: actions/setup-python@v1
       with:
           python-version: 3.7
-    - name: reinstall nodejs
-      run: |
-        cd ~
-        pip install --upgrade pip
-        pip uninstall nodejs
-        pip install nodejs
+
 
     - name: Initialization environment 
       run: |
@@ -31,13 +26,7 @@ jobs:
         pip install bsdiff4
         python -m pip install protobuf
 
-    - name: Clean Up Disk Space
-      run: |
-        
-        sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/apt/sources.list.d
-        sudo -E apt-get -y purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* mysql* php*
-        sudo -E apt-get -y autoremove --purge
-        sudo -E apt-get clean 
+
         
     - name: Clone the tools source code
       run: |
